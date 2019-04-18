@@ -16,8 +16,5 @@
         <ContentControl Name="_contentControl" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
         
-        <TextBlock Background="Black" TextAlignment="Right" Foreground="Wheat" HorizontalAlignment="Stretch" Grid.Row="1">
-            © Rybka, 2019
-        </TextBlock>
     </Grid>
 </Window>

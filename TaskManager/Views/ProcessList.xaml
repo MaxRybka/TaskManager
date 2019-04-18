@@ -8,20 +8,20 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="8*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Red" />
         </Grid.Resources>
 
-        <!-- ComboBox to sort datagrid -->
-        <ComboBox SelectedIndex="{Binding SortBy}">
+        <ComboBox SelectedIndex="{Binding SortBy}" Grid.Column="0" Grid.Row="0" Height="30">
             <ComboBoxItem IsEnabled="False" IsSelected="True">Sort by:</ComboBoxItem>
             <ComboBoxItem>Name</ComboBoxItem>
             <ComboBoxItem>ID</ComboBoxItem>
@@ -35,13 +35,12 @@
             <ComboBoxItem>Date</ComboBoxItem>
         </ComboBox>
 
-        <!-- Top buttons -->
-        <Button Command="{Binding CloseProcessCommand}" FontSize="18" Grid.Column="1" Content="Close" Foreground="White" Background="Red"/>
-        <Button Command="{Binding GoToProcessInfoCommand}" FontSize="18" Grid.Column="2" Content="Info" Foreground="White" Background="Orange"/>
 
-        <!-- DataGrid with all processes -->
+        <Button Command="{Binding CloseProcessCommand}" FontSize="18" Grid.Column="0" Grid.Row="1"  Height="30" Content="Close" Background="Red"/>
+        <Button Command="{Binding GoToProcessInfoCommand}" FontSize="18" Grid.Column="0" Grid.Row="2"  Height="30" Content="Info" Background="Green"/>
+
         <DataGrid SelectedItem="{Binding SelectedProcess, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Processes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                  CanUserSortColumns="False" Grid.Row="1" AutoGenerateColumns="False" Grid.ColumnSpan="3">
+                  CanUserSortColumns="False" Grid.RowSpan="4" AutoGenerateColumns="False" Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>

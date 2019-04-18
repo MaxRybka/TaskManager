@@ -11,34 +11,33 @@
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!-- Top buttons -->
-        <Button Command="{Binding GoBackCommand}" FontSize="18" Grid.Column="0" Content="Back" Foreground="White" Background="LightCoral"/>
-        <Button Command="{Binding OpenFolderCommand}" FontSize="18" Grid.Column="1" Content="Open folder" Foreground="White" Background="Green"/>
-        <Button Command="{Binding CloseProcessCommand}" FontSize="18" Grid.Column="2" Content="Close" Foreground="White" Background="Red"/>
+        <Button Command="{Binding GoBackCommand}" FontSize="18" Grid.Column="0" Grid.Row="4" Content="Back" MinWidth="80"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Gray" Margin="0,0,0,24"/>
+        <Button Command="{Binding OpenFolderCommand}" FontSize="18" Grid.Column="0" Grid.Row="2" Content="Open folder"  MinWidth="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Green"/>
+        <Button Command="{Binding CloseProcessCommand}" FontSize="18" Grid.Column="0"  Grid.Row="3" Content="Close"  MinWidth="80" HorizontalAlignment="Center" VerticalAlignment="Bottom" Background="Red"/>
 
-        <!-- Process name -->
-        <TextBlock Text="{Binding ProcessName}" FontSize="30" HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3"></TextBlock>
+        <TextBlock Text="Name : " FontSize="20" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
+        <TextBlock Text="{Binding ProcessName}" FontSize="20" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"></TextBlock>
 
-        <!-- Process modules -->
-        <Label Content="Modules: " FontSize="30" HorizontalAlignment="Right" Grid.Row="2"></Label>
-        <DataGrid ItemsSource="{Binding Modules}" Margin="10" AutoGenerateColumns="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <Label Content="Modules" FontSize="20" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Height="50" VerticalAlignment="Center"/>
+        <DataGrid ItemsSource="{Binding Modules}" Margin="10" AutoGenerateColumns="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding ModuleName, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Folder" Binding="{Binding FileName, Mode=OneWay}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Process streams -->
-        <Label Content="Streams: " FontSize="30" HorizontalAlignment="Right" Grid.Row="3"></Label>
-        <DataGrid ItemsSource="{Binding Threads}" Margin="10" AutoGenerateColumns="False" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+        <Label Content="Streams" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"  Grid.Row="3" Grid.Column="1"></Label>
+        <DataGrid ItemsSource="{Binding Threads}" Margin="10" AutoGenerateColumns="False" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id, Mode=OneWay}"></DataGridTextColumn>
                 <DataGridTextColumn Header="State" Binding="{Binding ThreadState, Mode=OneWay}"></DataGridTextColumn>
